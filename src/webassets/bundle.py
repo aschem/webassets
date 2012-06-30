@@ -727,12 +727,7 @@ def _effective_debug_level(env, bundle, extra_filters=None, default=None):
         level = 'merge' if select_filters(filters, True) else None
 
     if level is not None:
-        # The new level must be lower than the older one. We do not thrown an
-        # error if this is NOT the case, but silently ignore it. This is so
-        # that a debug=True can be used to overwrite auto_debug_upgrade.
-        # Otherwise debug=True would always fail.
-        if cmp_debug_levels(default, level) > 0:
-            return level
+        return level
     return default
 
 
